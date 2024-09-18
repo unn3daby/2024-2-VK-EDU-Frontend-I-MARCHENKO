@@ -13,12 +13,17 @@
  */
 
 export default function convertBytesToHuman(bytes) {
-  if (bytes === 0) return '0 B'
-  if (isNaN(bytes) || typeof bytes !== 'number' || bytes < 0) return false;
+  if (Number.isFinite(bytes) || bytes < 0) {
+    return false;
+  }
+
+  if (bytes === 0){
+    return '0 B';
+  } 
 
   const humanSizes = ['B', 'KB', 'MB', 'GB', 'TB'];
   const sizeIndex = Math.min(humanSizes.length - 1, Math.floor(Math.log(bytes) / Math.log(1024)));
-  const value = (bytes / 1024**sizeIndex);
+  const value = (bytes / 1024 ** sizeIndex);
 
   const formattedValue = Number.isInteger(value) ? value.toString() : value.toFixed(2);
 

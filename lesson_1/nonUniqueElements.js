@@ -26,8 +26,8 @@ nonUniqueElements([10, 9, 10, 10, 9, 8]) == [10, 9, 10, 10, 9]
 
 export default function nonUniqueElements(data) {
   const counter = data.reduce((acc, item) => {
-    acc[item] = (acc[item] || 0) + 1
+    acc[item] = (acc[item] || 0) + 1;
     return acc;
   }, {});
-  return data.filter(item => counter[item] > 1)
+  return data.filter(item => counter[item] > 1);
 }

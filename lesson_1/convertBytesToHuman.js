@@ -6,14 +6,13 @@
  * человекопонятную строку, которая будет
  * отражать размер файла. Примеры использования:
  * `convertBytesToHuman(1024) === '1 KB';`
- * `convertBytesToHuman(123123123) === '117.42 MB';`
+ * `convertBytesToHuman(123123123) === '117.4293 MB';`
  * Необходимо предусмотреть защиту от
  * передачи аргументов неправильного типа
  * и класса (например, отрицательные числа)
  */
 
 export function convertBytesToHuman(bytes) {
-  console.log(bytes, Number.isFinite(bytes))
   if (!Number.isFinite(bytes) || bytes < 0) {
     return false;
   }
@@ -26,7 +25,7 @@ export function convertBytesToHuman(bytes) {
   const sizeIndex = Math.min(humanSizes.length - 1, Math.floor(Math.log(bytes) / Math.log(1024)));
   const value = (bytes / 1024 ** sizeIndex);
 
-  const formattedValue = Number.isInteger(value) ? value.toString() : 1 * value.toFixed(2);
+  const formattedValue = Number.isInteger(value) ? value.toString() : +value.toFixed(2);
 
   return `${formattedValue} ${humanSizes[sizeIndex]}`;
 }

@@ -12,7 +12,7 @@
  * и класса (например, отрицательные числа)
  */
 
-export default function convertBytesToHuman(bytes) {
+export function convertBytesToHuman(bytes) {
   if (Number.isFinite(bytes) || bytes < 0) {
     return false;
   }

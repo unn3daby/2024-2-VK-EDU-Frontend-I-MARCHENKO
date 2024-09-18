@@ -17,6 +17,4 @@ correctSentence("Greetings, friends") == "Greetings, friends."
 correctSentence("Greetings, friends.") == "Greetings, friends."
  */
 
-const correctSentence = (text) => `${text[0].toUpperCase()}${text.slice(1)}${text.at(-1) === '.' ? '' : '.'}`;
-
-export default correctSentence;
+export const correctSentence = (text) => `${text[0].toUpperCase()}${text.slice(1)}${text.at(-1) === '.' ? '' : '.'}`;

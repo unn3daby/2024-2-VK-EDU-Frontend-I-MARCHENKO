@@ -13,7 +13,8 @@
  */
 
 export function convertBytesToHuman(bytes) {
-  if (Number.isFinite(bytes) || bytes < 0) {
+  console.log(bytes, Number.isFinite(bytes))
+  if (!Number.isFinite(bytes) || bytes < 0) {
     return false;
   }
 
@@ -25,7 +26,7 @@ export function convertBytesToHuman(bytes) {
   const sizeIndex = Math.min(humanSizes.length - 1, Math.floor(Math.log(bytes) / Math.log(1024)));
   const value = (bytes / 1024 ** sizeIndex);
 
-  const formattedValue = Number.isInteger(value) ? value.toString() : value.toFixed(2);
+  const formattedValue = Number.isInteger(value) ? value.toString() : 1 * value.toFixed(2);
 
   return `${formattedValue} ${humanSizes[sizeIndex]}`;
 }

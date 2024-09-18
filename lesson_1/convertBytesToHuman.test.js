@@ -36,7 +36,7 @@ test('Возвращает корректное значение для чисе
 
 test('Возвращает корректное дробное значение для чисел', () => {
   expect(convertBytesToHuman(123123123)).toBe('117.42 MB')
-  expect(convertBytesToHuman(1024 * 1024 * 1024 * 1.5)).toBe('1.50 GB');
-  expect(convertBytesToHuman(1024 * 1024 * 1024 * 1024 * 1.5)).toBe('1.50 TB');
+  expect(convertBytesToHuman(1024 * 1024 * 1024 * 1.5)).toBe('1.5 GB');
+  expect(convertBytesToHuman(1024 * 1024 * 1024 * 1024 * 1.5)).toBe('1.5 TB');
 });
 // другая группа проверок

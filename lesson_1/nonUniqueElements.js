@@ -25,7 +25,14 @@ nonUniqueElements([10, 9, 10, 10, 9, 8]) == [10, 9, 10, 10, 9]
  */
 
 export function nonUniqueElements(data) {
+  if (!Array.isArray(data)) {
+    throw new Error('Argument must be array'); 
+  }
+
   const counter = data.reduce((acc, item) => {
+    if (!Number.isFinite(item)) {
+      throw new Error('Data item must be number')
+    }
     acc[item] = (acc[item] || 0) + 1;
     return acc;
   }, {});

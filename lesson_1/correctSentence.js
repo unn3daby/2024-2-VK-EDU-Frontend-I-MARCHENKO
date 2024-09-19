@@ -17,4 +17,16 @@ correctSentence("Greetings, friends") == "Greetings, friends."
 correctSentence("Greetings, friends.") == "Greetings, friends."
  */
 
-export const correctSentence = (text) => `${text[0].toUpperCase()}${text.slice(1)}${text.at(-1) === '.' ? '' : '.'}`;
+export const correctSentence = (text) => {
+if (typeof text !== 'string') {
+  throw new Error('Argument must be string');
+}
+
+const trimmedText = text.trim();
+
+if (!trimmedText) {
+  return '';
+}
+
+return `${trimmedText[0].toUpperCase()}${trimmedText.slice(1)}${trimmedText.at(-1) === '.' ? '' : '.'}`;
+}

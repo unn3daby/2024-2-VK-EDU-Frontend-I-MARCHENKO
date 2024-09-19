@@ -10,7 +10,6 @@
 import { convertBytesToHuman } from './convertBytesToHuman';
 
 test('Возвращает false для неправильного типа данных', () => {
-  expect(convertBytesToHuman(-1)).toBe(false);
   expect(convertBytesToHuman('1024')).toBe(false);
   expect(convertBytesToHuman(null)).toBe(false);
   expect(convertBytesToHuman(undefined)).toBe(false);
@@ -20,7 +19,10 @@ test('Возвращает false для неправильного типа да
 
 test('Возвращает некорректное значение для NaN', () => {
   expect(convertBytesToHuman(NaN)).toBe(false)
- 
+});
+
+test('Возвращает некорректное значение для отрицательных чисел', () => {
+  expect(convertBytesToHuman(-1)).toBe(false);
 });
 
 test('Возвращает корректное значение для чисел', () => {

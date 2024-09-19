@@ -8,6 +8,7 @@ test('returns correct sentence', () => {
   expect(correctSentence("       ")).toBe("");
   expect(correctSentence("   as das da sd    ")).toBe("As das da sd.");
   expect(correctSentence("123")).toBe("123.");
+  expect(correctSentence("a")).toBe("A.");
 });
 
 test('throw error', () => {

@@ -1,0 +1,49 @@
+html {
+  box-sizing: border-box;
+  font-size: 15px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  background-color: #fff;
+  color: #333;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  line-height: 20px;
+  #app {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f8f8;
+    .header {
+      height: 40px;
+      background-color: #aa00ff;
+    }
+    .form {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      .message-container {
+        flex-grow: 1;
+      }
+      .form-textarea {
+        vertical-align: baseline;
+        margin: 10px 10px;
+        border: 2px solid purple;
+        border-radius: 10px;
+        font-size: 16px;
+        box-sizing: border-box;
+        padding: 10px;
+        resize: none;
+        line-height: 20px;
+      }
+    }
+  }
+}

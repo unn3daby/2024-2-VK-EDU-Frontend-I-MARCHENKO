@@ -1,8 +1,8 @@
-import perfectionistPlugin from 'eslint-plugin-perfectionist'
-import stylisticJsPlugin from '@stylistic/eslint-plugin-js'
-import prettierPlugin from 'eslint-plugin-prettier'
-import jsPlugin from '@eslint/js'
-import globals from 'globals'
+import perfectionistPlugin from 'eslint-plugin-perfectionist';
+import stylisticJsPlugin from '@stylistic/eslint-plugin-js';
+import prettierPlugin from 'eslint-plugin-prettier';
+import jsPlugin from '@eslint/js';
+import globals from 'globals';
 
 export default [
   jsPlugin.configs.recommended,
@@ -73,4 +73,4 @@ export default [
   {
     ignores: ['dist', 'node_modules'],
   },
-]
+];

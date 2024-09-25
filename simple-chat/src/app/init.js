@@ -11,8 +11,6 @@ function init() {
     username = prompt('Введите имя пользователя');
   } while (!username);
 
-  console.log(username);
-
   let textareaValue = '';
 
   let rawMessages = localStorage.getItem('messages');

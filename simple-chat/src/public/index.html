@@ -7,13 +7,20 @@
   <body>
     <div id="app">
       <header class="header"></header>
+      <div class="message-container"></div>
       <form class="form" action="/">
-        <div class="message-container"></div>
-        <div
-          contenteditable="true"
-          class="form-textarea"
-          placeholder="Введите текст сообщения"
-        ></div>
+        <div class="textarea-wrapper">
+          <div
+            contenteditable="true"
+            class="form-textarea"
+            placeholder="Введите текст сообщения"
+          ></div>
+          <div class="button-wrapper">
+            <button class="send-button">
+              <i class="mdi mdi-send lg"></i>
+            </button>
+          </div>
+        </div>
       </form>
     </div>
   </body>

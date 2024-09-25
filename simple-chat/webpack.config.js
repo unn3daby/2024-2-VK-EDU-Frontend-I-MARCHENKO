@@ -47,8 +47,12 @@ const config = {
       },
       {
         use: ['style-loader', 'css-loader', 'sass-loader'],
-        test: /\.s[ac]ss$/i,
+        test: /\.s(a|c)ss$/,
         include: SRC_PATH,
+      },
+      {
+        use: ['style-loader', 'css-loader'],
+        test: /\.css$/,
       },
     ],
     strictExportPresence: true,

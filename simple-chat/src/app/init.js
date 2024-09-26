@@ -2,7 +2,7 @@ import '@/style/index.scss';
 import '@mdi/font/css/materialdesignicons.css';
 
 import { messageContainer, textarea, form } from './elements.js';
-import { createChatItem } from './renderMessage.js';
+import { createChatItem } from './render-message.js';
 
 function init() {
   let username;
@@ -65,6 +65,4 @@ function init() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  init();
-});
+document.addEventListener('DOMContentLoaded', init);

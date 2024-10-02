@@ -3,7 +3,7 @@
   "type": "module",
   "scripts": {
     "dev": "webpack-dev-server --mode=development --hot",
-    "build": "webpack --mode=development"
+    "build": "webpack --mode=production"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

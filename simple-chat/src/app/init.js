@@ -30,7 +30,7 @@ function init() {
 
   textarea.addEventListener('input', function (e) {
     e.preventDefault();
-    textareaValue = this.innerText;
+    textareaValue = this.value;
   });
 
   textarea.addEventListener('keydown', e => {
@@ -59,7 +59,7 @@ function init() {
 
     localStorage.setItem('messages', JSON.stringify(messages));
 
-    textarea.innerText = '';
+    textarea.value = '';
 
     messageContainer.scrollTo({ top: messageContainer.scrollHeight });
   });

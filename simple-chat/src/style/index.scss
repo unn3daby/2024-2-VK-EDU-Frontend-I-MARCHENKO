@@ -1,0 +1,125 @@
+html {
+  box-sizing: border-box;
+  font-size: 15px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  color: #333;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  line-height: 20px;
+
+  #app {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(227, 227, 227);
+    position: relative;
+
+    .header {
+      height: 40px;
+      background-color: #aa00ff;
+    }
+
+    .message-container {
+      flex-grow: 1;
+      padding: 10px 20px;
+      overflow-y: auto;
+      max-height: calc(100vh - 100px);
+
+      .chat-item {
+        display: flex;
+        margin: 10px 0;
+
+        &-footer {
+          display: flex;
+          justify-content: flex-end;
+          font-size: 10px;
+          color: grey;
+        }
+
+        &-username {
+          font-size: 12px;
+          color: grey;
+        }
+
+        &-inner {
+          background-color: #fff;
+          padding: 10px;
+          border-radius: 10px;
+        }
+
+        .sent {
+          margin-left: auto;
+          .chat-item-inner {
+            background-color: #fde9ff;
+          }
+        }
+      }
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      bottom: 0;
+      position: absolute;
+      width: 100%;
+
+      .form-textarea {
+        margin-right: 10px;
+        border: 2px solid purple;
+        border-radius: 10px;
+        font-size: 16px;
+        padding: 10px;
+        max-height: 200px;
+        overflow-y: auto;
+        background-color: #fff;
+        flex-grow: 1;
+        resize: none;
+      }
+
+      .textarea-wrapper {
+        display: flex;
+        margin: 10px;
+      }
+
+      .button-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .send-button {
+        background-color: inherit;
+        border: 0;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+[contenteditable='true']:empty:before {
+  content: attr(placeholder);
+  pointer-events: none;
+  display: block;
+}
+
+.lg {
+  font-size: 30px;
+}
+
+.md {
+  font-size: 25px;
+}
+
+.sm {
+  font-size: 20px;
+}

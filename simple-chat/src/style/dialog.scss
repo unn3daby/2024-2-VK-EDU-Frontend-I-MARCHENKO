@@ -1,0 +1,77 @@
+.dialog {
+  flex: 1 0 0;
+  padding: 0 0 0 1rem;
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    border-radius: 15px;
+    background-color: #181a23;
+    width: 100%;
+    height: 100%;
+  }
+  &__inner {
+    flex: 1 0 0;
+    padding: 1rem 1rem 0 1rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+  }
+  &__item {
+    display: flex;
+    margin-bottom: 1rem;
+    max-width: 100%;
+  }
+  .sent {
+    justify-content: flex-end;
+    .dialog__message {
+      background-color: #17a7f0;
+      padding: 0.5rem;
+      border-radius: 10px;
+      word-wrap: break-word;
+      max-width: 500px;
+      overflow-wrap: break-word;
+    }
+  }
+
+  &__message {
+    background-color: #555f6f;
+    padding: 0.5rem;
+    border-radius: 10px;
+    word-wrap: break-word;
+    max-width: 500px;
+    overflow-wrap: break-word;
+  }
+
+  &__textarea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    textarea {
+      max-height: 50px;
+      padding: 1rem;
+      line-height: 1rem;
+      font-size: 1rem;
+      margin-right: 1rem;
+      flex-grow: 1;
+      background-color: #555f6f;
+      border-radius: 10px;
+      resize: none;
+      width: 100%;
+      min-height: 3rem;
+      border: none;
+      outline: none;
+      &::placeholder {
+        color: rgb(169, 168, 168);
+      }
+    }
+  }
+  &__placeholder {
+    font-size: 40px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-25%) translateY(-25%);
+  }
+}

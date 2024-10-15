@@ -1,68 +1,19 @@
-import '@/style/index.scss';
 import '@mdi/font/css/materialdesignicons.css';
+import '@/style/index.scss';
 
-import { messageContainer, textarea, form } from './elements.js';
-import { createChatItem } from './render-message.js';
+import { ChatPageRenderer } from './chatPageRenderer.js';
+import { Chat } from './chatList.js';
+import { Form } from './form.js';
 
 function init() {
-  let username;
+  const chatRenderer = new ChatPageRenderer(
+    '.dialog__inner',
+    '.dialog__textarea',
+  );
 
-  do {
-    username = prompt('Введите имя пользователя');
-  } while (!username);
+  const chat = new Chat('.chat__body', '.button__add', chatRenderer);
 
-  let textareaValue = '';
-
-  let rawMessages = localStorage.getItem('messages');
-
-  if (!rawMessages) {
-    localStorage.setItem('messages', '[]');
-    rawMessages = '[]';
-  }
-
-  const messages = JSON.parse(rawMessages);
-
-  messages.forEach(({ username: messageUsername, text, time }) => {
-    messageContainer.appendChild(
-      createChatItem(text, messageUsername === username, messageUsername, time),
-    );
-  });
-
-  textarea.addEventListener('input', function (e) {
-    e.preventDefault();
-    textareaValue = this.value;
-  });
-
-  textarea.addEventListener('keydown', e => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      form.dispatchEvent(new Event('submit'));
-    }
-  });
-
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-
-    const now = new Date();
-
-    const newMessage = {
-      time: `${now.getHours()}:${now.getMinutes()}`,
-      text: textareaValue,
-      username,
-    };
-
-    messages.push(newMessage);
-
-    messageContainer.appendChild(
-      createChatItem(newMessage.text, true, username, newMessage.time),
-    );
-
-    localStorage.setItem('messages', JSON.stringify(messages));
-
-    textarea.value = '';
-
-    messageContainer.scrollTo({ top: messageContainer.scrollHeight });
-  });
+  new Form('.dialog', '#chat__input', chat, chatRenderer);
 }
 
 document.addEventListener('DOMContentLoaded', init);

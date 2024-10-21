@@ -1,3 +1,5 @@
+import { filterChatlist } from './utils.js';
+
 export class Form {
   constructor(formSelector, textareaSelector, chat, chatRenderer, username) {
     this.form = document.querySelector(formSelector);
@@ -13,12 +15,11 @@ export class Form {
   sendMessage(e) {
     e.preventDefault();
 
-    const chatList = JSON.parse(localStorage.getItem('chatList'));
+    let chatList = JSON.parse(localStorage.getItem('chatMap'));
 
     const message = {
       message: this.textarea.value,
       username: this.username,
-      sent: true,
     };
 
     this.chat.currentChat.chatLink.chat.push(message);
@@ -33,6 +34,8 @@ export class Form {
       timestamp: Date.now(),
     };
 
+    chatList = filterChatlist(chatList, this.username);
+
     this.chatWrapper.innerHTML = '';
     this.chatRenderer.renderItemsList(chatList, this.chatWrapper);
 
@@ -42,7 +45,7 @@ export class Form {
 
     this.chat.updateEventListeners(this.chatWrapper.children);
 
-    localStorage.setItem('chatList', JSON.stringify(chatList));
+    localStorage.setItem('chatMap', JSON.stringify(chatList));
   }
 
   handleKeyUp(e) {

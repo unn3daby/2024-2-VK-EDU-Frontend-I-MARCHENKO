@@ -13,7 +13,6 @@ export class ChatPageRenderer {
     chatItemsEntries.sort((a, b) => b[1].timestamp - a[1].timestamp);
 
     chatItemsEntries.forEach(([id, item]) => {
-      console.log(chatItems);
       const chatWithUserArray = item.users.filter(
         item => item !== this.username,
       );
@@ -24,6 +23,7 @@ export class ChatPageRenderer {
         item.timestamp,
         id,
       );
+
       wrapper.insertAdjacentHTML('beforeend', chatItem);
     });
   }

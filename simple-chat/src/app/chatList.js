@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
 import { chatItemString } from './elements.js';
+import { filterChatlist } from './utils.js';
 
 export class Chat {
   currentChat = { chatLink: null };
@@ -11,27 +12,12 @@ export class Chat {
     this.chatDialogRenderer = chatDialogRenderer;
     this.username = username;
 
-    const localChatList = localStorage.getItem('chatList');
+    const localChatList = localStorage.getItem('chatMap');
 
     if (localChatList) {
       const fullChatList = JSON.parse(localChatList);
 
-      console.log(
-        Object.entries(fullChatList)
-          .filter(([_, item]) => item.users.includes(this.username))
-          .reduce((acc, [id, item]) => {
-            acc[id] = item;
-
-            return acc;
-          }, {}),
-      );
-      this.chatList = Object.entries(fullChatList)
-        .filter(([_, item]) => item.users.includes(this.username))
-        .reduce((acc, [id, item]) => {
-          acc[id] = item;
-
-          return acc;
-        }, {});
+      this.chatList = filterChatlist(fullChatList, this.username);
     }
 
     const wrapperChildren = this.wrapper.children;
@@ -57,8 +43,12 @@ export class Chat {
         chat: [],
       };
 
+      const chatWithUserArray = this.chatList[itemId].users.filter(
+        item => item !== this.username,
+      );
+
       const chatString = chatItemString(
-        this.chatList[itemId].username,
+        chatWithUserArray[0],
         '',
         this.chatList[itemId].timestamp,
         itemId,
@@ -67,7 +57,7 @@ export class Chat {
       this.wrapper.insertAdjacentHTML('beforeend', chatString);
       this.updateEventListeners(wrapperChildren);
 
-      localStorage.setItem('chatList', JSON.stringify(this.chatList));
+      localStorage.setItem('chatMap', JSON.stringify(this.chatList));
     });
 
     search.addEventListener('input', e => {

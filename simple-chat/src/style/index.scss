@@ -1,5 +1,7 @@
 @use './chat.scss';
 @use './dialog.scss';
+@use './burger.scss';
+
 *,
 *::before,
 *::after {
@@ -23,6 +25,7 @@ body {
 #app {
   display: flex;
   height: 100%;
+  position: relative;
 }
 
 .hide {

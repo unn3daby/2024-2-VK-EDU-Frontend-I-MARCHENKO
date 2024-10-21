@@ -7,8 +7,13 @@
   </head>
   <body>
     <div id="app">
-      <div class="chat">
+      <div class="chat active">
         <div class="chat__header">
+          <div class="burger close">
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+          </div>
           <div class="chat__toolbar">
             <div class="chat__search">
               <input type="text" placeholder="Поиск..." class="chat__input" />
@@ -25,16 +30,15 @@
       </div>
       <form class="dialog">
         <div class="dialog__wrapper">
-          <div class="dialog__inner">
-            <div class="dialog__placeholder">
-              Выберите чат или создайте новый
+          <div class="dialog__header"></div>
+          <div class="dialog__messages">
+            <div class="dialog__inner"></div>
+            <div class="dialog__textarea hide">
+              <textarea placeholder="Введите текст" id="chat__input"></textarea>
+              <button class="chat__button">
+                <i class="mdi mdi-send md"></i>
+              </button>
             </div>
-          </div>
-          <div class="dialog__textarea hide">
-            <textarea placeholder="Введите текст" id="chat__input"></textarea>
-            <button class="chat__button">
-              <i class="mdi mdi-send md"></i>
-            </button>
           </div>
         </div>
       </form>

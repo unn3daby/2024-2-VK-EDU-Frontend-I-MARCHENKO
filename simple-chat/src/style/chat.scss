@@ -1,9 +1,18 @@
 .chat {
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
-  max-width: 425px;
+  max-width: 350px;
   max-height: 100%;
+  padding: 1rem;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(-100%);
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+  background-color: #292e40;
   .active {
     background-color: #555f6f;
   }
@@ -20,6 +29,7 @@
     justify-content: center;
     flex-wrap: nowrap;
     align-items: center;
+    height: 50px;
     width: 100%;
   }
   &__search {
@@ -70,9 +80,9 @@
     border-radius: 10px;
     align-items: center;
     display: flex;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.5rem;
     margin: 5px 0;
-    width: 300px;
+    width: 100%;
     &:hover {
       background-color: #555f6f;
     }
@@ -81,7 +91,7 @@
     padding: 0 1rem;
     display: flex;
     flex-direction: column;
-    width: 45%;
+    width: 50%;
   }
   &__date {
     flex-grow: 1;
@@ -113,5 +123,18 @@
       outline: none;
       font-size: 16px;
     }
+  }
+}
+
+.chat.active {
+  padding: 1rem;
+  transform: translateX(0);
+  background-color: #292e40;
+}
+
+@media (min-width: 768px) {
+  .chat {
+    transform: translateX(0);
+    position: static;
   }
 }

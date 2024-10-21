@@ -21,7 +21,7 @@ function init() {
 
   const chat = new Chat('.chat__body', '.button__add', chatRenderer, username);
 
-  new Form('.dialog', '#chat__input', chat, chatRenderer);
+  new Form('.dialog', '#chat__input', chat, chatRenderer, username);
 
   initAnims('.burger', '.chat');
 }

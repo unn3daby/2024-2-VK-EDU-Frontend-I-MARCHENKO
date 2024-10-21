@@ -41,7 +41,7 @@ export class Form {
 
     document
       .querySelector(`[id='${this.chat.currentChat.chatLink.id}']`)
-      .classList.add('active');
+      ?.classList?.add('active');
 
     this.chat.updateEventListeners(this.chatWrapper.children);
 

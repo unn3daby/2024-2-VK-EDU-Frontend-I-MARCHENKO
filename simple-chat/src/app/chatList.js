@@ -37,6 +37,12 @@ export class Chat {
         return;
       }
 
+      if (newChatUserName === this.username) {
+        alert('Имя чата не должно соответсвовать вашему');
+
+        return;
+      }
+
       this.chatList[itemId] = {
         users: [newChatUserName, this.username],
         timestamp: Date.now(),
@@ -93,6 +99,10 @@ export class Chat {
     Array.from(wrapperChildren).forEach(item => {
       item.addEventListener('click', () => {
         this.toggleItem(wrapperChildren, item);
+
+        const burger = document.querySelector('.burger');
+
+        burger?.click();
       });
     });
   }

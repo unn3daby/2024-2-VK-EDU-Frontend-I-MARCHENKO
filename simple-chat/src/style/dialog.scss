@@ -1,6 +1,5 @@
 .dialog {
   flex: 1 0 0;
-  padding: 0 0 0 1rem;
   &__wrapper {
     display: flex;
     flex-direction: column;
@@ -82,5 +81,14 @@
     left: 50%;
     top: 50%;
     transform: translateX(-25%) translateY(-25%);
+  }
+}
+
+@media (min-width: 768px) {
+  .dialog__header {
+    display: none;
+  }
+  .dialog {
+    padding: 0 0 0 1rem;
   }
 }

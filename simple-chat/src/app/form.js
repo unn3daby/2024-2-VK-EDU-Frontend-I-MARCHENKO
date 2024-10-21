@@ -1,9 +1,10 @@
 export class Form {
-  constructor(formSelector, textareaSelector, chat, chatRenderer) {
+  constructor(formSelector, textareaSelector, chat, chatRenderer, username) {
     this.form = document.querySelector(formSelector);
     this.textarea = document.querySelector(textareaSelector);
     this.chat = chat;
     this.chatRenderer = chatRenderer;
+    this.username = username;
     this.chatWrapper = document.querySelector('.chat__body');
     this.form.addEventListener('submit', this.sendMessage.bind(this));
     this.form.addEventListener('keyup', this.handleKeyUp.bind(this));
@@ -16,14 +17,15 @@ export class Form {
 
     const message = {
       message: this.textarea.value,
-      username: 'you',
+      username: this.username,
       sent: true,
     };
 
     this.chat.currentChat.chatLink.chat.push(message);
+
     this.textarea.value = null;
 
-    this.chatRenderer.renderMessage(message);
+    this.chatRenderer.renderMessage(message, true);
 
     chatList[this.chat.currentChat.chatLink.id] = {
       ...chatList[this.chat.currentChat.chatLink.id],

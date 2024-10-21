@@ -6,14 +6,32 @@ export class Chat {
   currentChat = { chatLink: null };
   chatList = {};
 
-  constructor(wrapperSelector, addBtnSelector, chatDialogRenderer) {
+  constructor(wrapperSelector, addBtnSelector, chatDialogRenderer, username) {
     this.wrapper = document.querySelector(wrapperSelector);
     this.chatDialogRenderer = chatDialogRenderer;
+    this.username = username;
 
     const localChatList = localStorage.getItem('chatList');
 
     if (localChatList) {
-      this.chatList = JSON.parse(localChatList);
+      const fullChatList = JSON.parse(localChatList);
+
+      console.log(
+        Object.entries(fullChatList)
+          .filter(([_, item]) => item.users.includes(this.username))
+          .reduce((acc, [id, item]) => {
+            acc[id] = item;
+
+            return acc;
+          }, {}),
+      );
+      this.chatList = Object.entries(fullChatList)
+        .filter(([_, item]) => item.users.includes(this.username))
+        .reduce((acc, [id, item]) => {
+          acc[id] = item;
+
+          return acc;
+        }, {});
     }
 
     const wrapperChildren = this.wrapper.children;
@@ -27,11 +45,16 @@ export class Chat {
 
     button.addEventListener('click', () => {
       const itemId = uuidv4();
+      const newChatUserName = prompt('Введие имя пользователя');
+
+      if (!newChatUserName) {
+        return;
+      }
 
       this.chatList[itemId] = {
-        username: `Имя №${Object.keys(this.chatList).length + 1}`,
-        chat: [{ message: 'Тестовое сообщение', username: '' }],
+        users: [newChatUserName, this.username],
         timestamp: Date.now(),
+        chat: [],
       };
 
       const chatString = chatItemString(
@@ -49,7 +72,11 @@ export class Chat {
 
     search.addEventListener('input', e => {
       for (const i in this.chatList) {
-        if (!this.chatList[i].username.toLowerCase().includes(e.target.value)) {
+        if (
+          !this.chatList[i].username
+            .toLowerCase()
+            .includes(e.target.value.toLowerCase())
+        ) {
           document.getElementById(i).classList.add('hide');
         } else {
           document.getElementById(i).classList.remove('hide');

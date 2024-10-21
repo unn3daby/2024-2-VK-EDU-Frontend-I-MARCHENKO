@@ -63,7 +63,9 @@ export class Chat {
     search.addEventListener('input', e => {
       for (const i in this.chatList) {
         if (
-          !this.chatList[i].username
+          !this.chatList[i].users
+            .filter(item => item !== this.username)
+            .join('')
             .toLowerCase()
             .includes(e.target.value.toLowerCase())
         ) {

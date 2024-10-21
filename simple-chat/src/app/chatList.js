@@ -70,6 +70,8 @@ export class Chat {
       for (const i in this.chatList) {
         if (
           !this.chatList[i].username
+            .filter(item => item !== this.username)
+            .join('')
             .toLowerCase()
             .includes(e.target.value.toLowerCase())
         ) {
